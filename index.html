@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viktor’s Projects</title>
+  <meta name="description" content="Project hub: ChemGame and ArtGallery." />
+  <style>
+    :root { color-scheme: dark light; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.5;
+      padding: 32px 16px;
+      background: #0b0f19;
+      color: #e6e8ee;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    header { margin-bottom: 20px; }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    p { margin: 0; color: #b8c0d6; }
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .card {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 16px;
+      transition: transform 120ms ease, border-color 120ms ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.22);
+    }
+    .card h2 { margin: 0 0 6px; font-size: 18px; }
+    .card .meta { font-size: 13px; color: #a7b0c8; margin-bottom: 10px; }
+    .card .desc { margin: 0 0 14px; color: #cdd3e3; }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    a.btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #e6e8ee;
+      background: rgba(255,255,255,0.06);
+    }
+    a.btn.primary { background: #3b82f6; border-color: #3b82f6; color: #06101f; }
+    a.btn:hover { filter: brightness(1.06); }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: #9aa3bc;
+      font-size: 13px;
+    }
+    code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Viktor’s Project Hub</h1>
+      <p>Quick access to my deployed apps and games.</p>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>ChemGame</h2>
+        <div class="meta">Hosted on AWS Lambda</div>
+        <p class="desc">A small game for learning chemical names / element symbols.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://ugivkxyzf4vyfay4a2h3vvrnma0aanfc.lambda-url.eu-north-1.on.aws/" target="_blank" rel="noopener noreferrer">
+            Open ChemGame
+          </a>
+          <a class="btn" href="https://ugivkxyzf4vyfay4a2h3vvrnma0aanfc.lambda-url.eu-north-1.on.aws/" target="_blank" rel="noopener noreferrer">
+            Copy Link
+          </a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>ArtGallery Game</h2>
+        <div class="meta">Hosted on PythonAnywhere</div>
+        <p class="desc">Art guessing / gallery-style game.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://readapp.pythonanywhere.com/" target="_blank" rel="noopener noreferrer">
+            Open ArtGallery
+          </a>
+          <a class="btn" href="https://readapp.pythonanywhere.com/" target="_blank" rel="noopener noreferrer">
+            Copy Link
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>Hosted on <code>GitHub Pages</code>. Add more cards as you ship more projects.</div>
+    </footer>
+  </div>
+</body>
+</html>
