@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="lv">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,10 +16,27 @@
       color: #e6e8ee;
     }
     .wrap { max-width: 900px; margin: 0 auto; }
-    header { margin-bottom: 20px; }
+    header { margin-bottom: 20px; position: relative; }
     h1 { margin: 0 0 6px; font-size: 28px; }
     p { margin: 0; color: #b8c0d6; }
-
+    .lang-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: #e6e8ee;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 120ms ease;
+    }
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.22);
+    }
     .grid {
       margin-top: 24px;
       display: grid;
@@ -40,7 +57,6 @@
     .card h2 { margin: 0 0 6px; font-size: 18px; }
     .card .meta { font-size: 13px; color: #a7b0c8; margin-bottom: 10px; }
     .card .desc { margin: 0 0 14px; color: #cdd3e3; }
-
     .actions { display: flex; gap: 10px; flex-wrap: wrap; }
     a.btn {
       display: inline-block;
@@ -54,7 +70,6 @@
     }
     a.btn.primary { background: #3b82f6; border-color: #3b82f6; color: #06101f; }
     a.btn:hover { filter: brightness(1.06); }
-
     footer {
       margin-top: 26px;
       padding-top: 16px;
@@ -65,41 +80,66 @@
     code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 6px; }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <header>
-      <h1>Izglītojošas Spēles</h1>
-      <p>Saites uz spēlēm</p>
+      <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+      <h1 data-lv="Izglītojošas Spēles" data-en="Educational Games">Izglītojošas Spēles</h1>
+      <p data-lv="Saites uz spēlēm" data-en="Links to games">Saites uz spēlēm</p>
     </header>
-
     <main class="grid">
       <section class="card">
-        <h2>Ķīmijas Anagrammas</h2>
+        <h2 data-lv="Ķīmijas Anagrammas" data-en="Chemistry Anagrams">Ķīmijas Anagrammas</h2>
         <div class="meta"></div>
-        <p class="desc">Izviedo vārdu no elementu simboliem</p>
+        <p class="desc" data-lv="Izviedo vārdu no elementu simboliem" data-en="Unscramble words from element symbols">Izviedo vārdu no elementu simboliem</p>
         <div class="actions">
           <a class="btn primary" href="https://ugivkxyzf4vyfay4a2h3vvrnma0aanfc.lambda-url.eu-north-1.on.aws/" target="_blank" rel="noopener noreferrer">
-            Sāc minēt!
+            <span data-lv="Sāc minēt!" data-en="Start guessing!">Sāc minēt!</span>
           </a>
         </div>
       </section>
-
       <section class="card">
-        <h2>Lasišanas Trenažieris</h2>
+        <h2 data-lv="Lasīšanas Trenažieris" data-en="Reading Coach">Lasīšanas Trenažieris</h2>
         <div class="meta"></div>
-        <p class="desc">Iekopē savu textu, ģenerē jautājumus un sāc lasīt!</p>
+        <p class="desc" data-lv="Iekopē savu textu, ģenerē jautājumus un sāc lasīt!" data-en="Upload your text, simplify it, and practise comprehension with instant feedback.">Iekopē savu textu, ģenerē jautājumus un sāc lasīt!</p>
         <div class="actions">
           <a class="btn primary" href="http://13.60.195.53/" target="_blank" rel="noopener noreferrer">
-            Sāc lasīt!
+            <span data-lv="Sāc lasīt!" data-en="Start reading!">Sāc lasīt!</span>
           </a>
         </div>
       </section>
     </main>
-
     <footer>
-      <div>Epasts <code>viktoraspeles at gmail.com</code> </div>
+      <div data-lv="Epasts" data-en="Email">Epasts</div> <code>viktoraspeles at gmail.com</code>
     </footer>
   </div>
+
+  <script>
+    let currentLang = 'lv';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'lv' ? 'en' : 'lv';
+      document.documentElement.lang = currentLang;
+      
+      // Update button text
+      document.querySelector('.lang-toggle').textContent = currentLang === 'lv' ? 'EN' : 'LV';
+      
+      // Update all elements with language data attributes
+      document.querySelectorAll('[data-lv][data-en]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+      });
+      
+      // Save preference
+      localStorage.setItem('preferredLang', currentLang);
+    }
+
+    // Load saved language preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang');
+      if (savedLang && savedLang !== currentLang) {
+        toggleLanguage();
+      }
+    });
+  </script>
 </body>
 </html>
