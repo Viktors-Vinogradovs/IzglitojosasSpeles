@@ -41,7 +41,13 @@
       margin-top: 24px;
       display: grid;
       gap: 14px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
+    }
+    /* Mobile fallback */
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
     .card {
       border: 1px solid rgba(255,255,255,0.12);
